@@ -229,25 +229,49 @@ textarea {
 
         <!-- HEADER -->
         <div class="header">
+
             <h1>Request Consultation</h1>
 
             <p>
                 Please fill in your details and site information.
                 Our team will review your request and get in touch with you.
             </p>
+
         </div>
 
 
         <!-- FORM -->
         <form
+            id="consultationForm"
             action="https://formspree.io/f/xppzaynb"
             method="POST"
         >
 
+            <!--
+                Formspree will redirect to this URL after successful submission.
+                JavaScript will automatically add the generated SRN.
+            -->
+            <input
+                type="hidden"
+                name="_next"
+                id="nextPage"
+            >
+
+
+            <!-- SUBJECT -->
+            <input
+                type="hidden"
+                name="_subject"
+                value="New Consultation Request"
+            >
+
+
             <!-- CUSTOMER DETAILS -->
             <div class="form-section">
 
-                <h2 class="section-title">Customer Details</h2>
+                <h2 class="section-title">
+                    Customer Details
+                </h2>
 
                 <div class="form-row">
 
@@ -255,7 +279,8 @@ textarea {
                     <div class="form-group">
 
                         <label for="name">
-                            Customer Name <span class="required">*</span>
+                            Customer Name
+                            <span class="required">*</span>
                         </label>
 
                         <input
@@ -273,7 +298,8 @@ textarea {
                     <div class="form-group">
 
                         <label for="mobile">
-                            Mobile Number <span class="required">*</span>
+                            Mobile Number
+                            <span class="required">*</span>
                         </label>
 
                         <input
@@ -283,6 +309,7 @@ textarea {
                             placeholder="Enter your mobile number"
                             pattern="[0-9]{10}"
                             maxlength="10"
+                            inputmode="numeric"
                             required
                         >
 
@@ -318,7 +345,9 @@ textarea {
             <!-- CONSULTATION -->
             <div class="form-section">
 
-                <h2 class="section-title">Consultation Details</h2>
+                <h2 class="section-title">
+                    Consultation Details
+                </h2>
 
                 <div class="form-row">
 
@@ -359,7 +388,9 @@ textarea {
             <!-- SITE ADDRESS -->
             <div class="form-section">
 
-                <h2 class="section-title">Site Address</h2>
+                <h2 class="section-title">
+                    Site Address
+                </h2>
 
                 <div class="form-row">
 
@@ -367,7 +398,8 @@ textarea {
                     <div class="form-group full">
 
                         <label for="address">
-                            Complete Address <span class="required">*</span>
+                            Complete Address
+                            <span class="required">*</span>
                         </label>
 
                         <textarea
@@ -388,7 +420,8 @@ textarea {
                     <div class="form-group">
 
                         <label for="city">
-                            City <span class="required">*</span>
+                            City
+                            <span class="required">*</span>
                         </label>
 
                         <input
@@ -406,7 +439,8 @@ textarea {
                     <div class="form-group">
 
                         <label for="state">
-                            State / Province <span class="required">*</span>
+                            State / Province
+                            <span class="required">*</span>
                         </label>
 
                         <select
@@ -466,7 +500,8 @@ textarea {
                     <div class="form-group full">
 
                         <label for="pincode">
-                            PIN Code <span class="required">*</span>
+                            PIN Code
+                            <span class="required">*</span>
                         </label>
 
                         <input
@@ -476,6 +511,7 @@ textarea {
                             placeholder="Enter 6-digit PIN code"
                             pattern="[0-9]{6}"
                             maxlength="6"
+                            inputmode="numeric"
                             required
                         >
 
@@ -489,7 +525,9 @@ textarea {
             <!-- APPOINTMENT -->
             <div class="form-section">
 
-                <h2 class="section-title">Preferred Appointment</h2>
+                <h2 class="section-title">
+                    Preferred Appointment
+                </h2>
 
                 <div class="appointment-note">
 
@@ -510,7 +548,8 @@ textarea {
                     <div class="form-group">
 
                         <label for="date">
-                            Preferred Date <span class="required">*</span>
+                            Preferred Date
+                            <span class="required">*</span>
                         </label>
 
                         <input
@@ -527,7 +566,8 @@ textarea {
                     <div class="form-group">
 
                         <label for="time">
-                            Preferred Time <span class="required">*</span>
+                            Preferred Time
+                            <span class="required">*</span>
                         </label>
 
                         <select
@@ -581,6 +621,7 @@ textarea {
                 <button
                     type="submit"
                     class="submit-btn"
+                    id="submitButton"
                 >
                     Request Consultation
                 </button>
@@ -599,54 +640,136 @@ textarea {
 </div>
 
 
-<!-- SET MINIMUM DATE TO TODAY -->
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
 <script>
 
-const dateInput = document.getElementById("date");
-
-const today = new Date();
-
-const year = today.getFullYear();
-
-const month = String(today.getMonth() + 1).padStart(2, "0");
-
-const day = String(today.getDate()).padStart(2, "0");
-
-dateInput.min = `${year}-${month}-${day}`;
-
-</script>
-    
-
-<!-- SRN GENERATOR -->
-<script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const form = document.querySelector("form");
+    const form = document.getElementById("consultationForm");
+    const dateInput = document.getElementById("date");
+    const nextPage = document.getElementById("nextPage");
+    const submitButton = document.getElementById("submitButton");
 
-    if (!form) return;
 
-    form.addEventListener("submit", function () {
+    /* =======================================================
+       SET MINIMUM DATE TO TODAY
+       ======================================================= */
 
-        const srnInput = document.createElement("input");
+    const today = new Date();
 
-        srnInput.type = "hidden";
-        srnInput.name = "service_request_number";
+    const year = today.getFullYear();
+
+    const month = String(
+        today.getMonth() + 1
+    ).padStart(2, "0");
+
+    const day = String(
+        today.getDate()
+    ).padStart(2, "0");
+
+    dateInput.min = `${year}-${month}-${day}`;
+
+
+    /* =======================================================
+       FORM SUBMIT
+       ======================================================= */
+
+    form.addEventListener("submit", function (event) {
+
+        /*
+         * Generate SRN only once.
+         */
+
+        let srnInput = document.getElementById("serviceRequestNumber");
+
+
+        if (!srnInput) {
+
+            srnInput = document.createElement("input");
+
+            srnInput.type = "hidden";
+
+            srnInput.id = "serviceRequestNumber";
+
+            srnInput.name = "service_request_number";
+
+            form.appendChild(srnInput);
+
+        }
+
+
+        /* ===================================================
+           GENERATE SRN
+           Format:
+           SRN-YYYYMMDD-XXXXXX
+           =================================================== */
 
         const now = new Date();
 
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, "0");
-        const day = String(now.getDate()).padStart(2, "0");
-        const random = Math.floor(100000 + Math.random() * 900000);
+        const srnYear = now.getFullYear();
 
-        srnInput.value = `SRN-${year}${month}${day}-${random}`;
+        const srnMonth = String(
+            now.getMonth() + 1
+        ).padStart(2, "0");
 
-        form.appendChild(srnInput);
+        const srnDay = String(
+            now.getDate()
+        ).padStart(2, "0");
+
+        const randomNumber = Math.floor(
+            100000 + Math.random() * 900000
+        );
+
+
+        const srn =
+            `SRN-${srnYear}${srnMonth}${srnDay}-${randomNumber}`;
+
+
+        /* ===================================================
+           PUT SRN INTO FORM
+           =================================================== */
+
+        srnInput.value = srn;
+
+
+        /* ===================================================
+           REDIRECT TO OUR OWN THANK YOU PAGE
+           WITH SRN
+           =================================================== */
+
+        const thankYouURL =
+            `${window.location.origin}/thankyou.html?srn=${encodeURIComponent(srn)}`;
+
+
+        nextPage.value = thankYouURL;
+
+
+        /* ===================================================
+           CHANGE BUTTON WHILE SUBMITTING
+           =================================================== */
+
+        submitButton.disabled = true;
+
+        submitButton.textContent = "Submitting Request...";
+
+
+        /*
+         * IMPORTANT:
+         * Do NOT use event.preventDefault().
+         *
+         * The normal browser submission must continue
+         * so Formspree receives the form and sends the email.
+         */
 
     });
 
 });
+
 </script>
+
 
 </body>
 </html>
