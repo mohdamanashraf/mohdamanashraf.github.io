@@ -12,6 +12,11 @@
   <meta name="author" content="Mohd Aman Ashraf">
 
   <style>
+
+    /* =========================
+       RESET
+    ========================= */
+
     * {
       margin: 0;
       padding: 0;
@@ -39,7 +44,11 @@
       margin: auto;
     }
 
-    /* NAVBAR */
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
     nav {
       position: sticky;
       top: 0;
@@ -83,20 +92,57 @@
       color: #38bdf8;
     }
 
-    /* HERO */
+
+    /* =========================
+       HERO
+    ========================= */
+
     .hero {
       min-height: 88vh;
       display: flex;
       align-items: center;
+
       background:
-        radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.16), transparent 35%),
-        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.10), transparent 35%);
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(14, 165, 233, 0.16),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 20% 80%,
+          rgba(59, 130, 246, 0.10),
+          transparent 35%
+        );
     }
 
     .hero-content {
       max-width: 800px;
       padding: 80px 0;
     }
+
+
+    /* PROFILE PHOTO */
+
+    .profile-photo {
+      width: 50px;
+      height: 50px;
+      margin: 0 0 20px 0;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.20);
+    }
+
+    .profile-photo img {
+      width: 50px;
+      height: 50px;
+      max-width: 50px;
+      max-height: 50px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
 
     .tag {
       display: inline-block;
@@ -127,6 +173,11 @@
       color: #94a3b8;
       margin-bottom: 30px;
     }
+
+
+    /* =========================
+       BUTTONS
+    ========================= */
 
     .buttons {
       display: flex;
@@ -163,7 +214,11 @@
       color: #38bdf8;
     }
 
-    /* SECTIONS */
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
     section {
       padding: 90px 0;
       border-top: 1px solid #172033;
@@ -187,7 +242,11 @@
       margin-top: 8px;
     }
 
-    /* ABOUT */
+
+    /* =========================
+       ABOUT
+    ========================= */
+
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -227,7 +286,11 @@
       text-align: right;
     }
 
-    /* SKILLS */
+
+    /* =========================
+       SKILLS
+    ========================= */
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -262,7 +325,11 @@
       font-size: 14px;
     }
 
-    /* PROJECTS */
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
     .projects {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -295,7 +362,11 @@
       text-transform: uppercase;
     }
 
-    /* EDUCATION */
+
+    /* =========================
+       EDUCATION
+    ========================= */
+
     .timeline {
       border-left: 2px solid #334155;
       padding-left: 25px;
@@ -304,6 +375,10 @@
     .timeline-item {
       position: relative;
       margin-bottom: 30px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
     }
 
     .timeline-item::before {
@@ -319,13 +394,18 @@
 
     .timeline-item h3 {
       color: white;
+      margin-bottom: 5px;
     }
 
     .timeline-item p {
       color: #94a3b8;
     }
 
-    /* CONTACT */
+
+    /* =========================
+       CONTACT
+    ========================= */
+
     .contact-box {
       text-align: center;
       background: #111827;
@@ -352,7 +432,11 @@
       gap: 12px;
     }
 
-    /* FOOTER */
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
       border-top: 1px solid #1f2937;
       padding: 30px 0;
@@ -365,8 +449,13 @@
       color: #38bdf8;
     }
 
-    /* MOBILE */
+
+    /* =========================
+       MOBILE
+    ========================= */
+
     @media (max-width: 800px) {
+
       .nav-links {
         display: none;
       }
@@ -391,40 +480,26 @@
       section {
         padding: 65px 0;
       }
+
     }
- <!-- existing CSS -->
 
-.profile-photo {
-  width: 50px !important;
-  height: 50px !important;
-  margin: 0 auto 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #38bdf8;
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.20);
-}
-
-.profile-photo img {
-  width: 50px !important;
-  height: 50px !important;
-  max-width: 50px !important;
-  max-height: 50px !important;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-}
-
-</style>
+  </style>
 </head>
+
 
 <body>
 
-  <!-- NAVIGATION -->
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
   <nav>
+
     <div class="container nav-inner">
 
       <a href="#" class="logo">
-        Mohd Aman<span>.</span>
+        Mohd Aman Ashraf<span>.</span>
       </a>
 
       <ul class="nav-links">
@@ -436,25 +511,35 @@
       </ul>
 
     </div>
+
   </nav>
 
 
-  <!-- HERO -->
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
   <header class="hero">
+
     <div class="container hero-content">
-      
+
+
       <div class="profile-photo">
-  <img src="profile.jpg" alt="Mohd Aman Ashraf">
-</div>
+        <img src="profile.jpg" alt="Mohd Aman Ashraf">
+      </div>
+
 
       <div class="tag">
         Available for Technical Opportunities
       </div>
 
+
       <h1>
         Mohd Aman<br>
         <span>Ashraf</span>
       </h1>
+
 
       <p>
         HVAC & AC Technician with practical technical interests in
@@ -463,7 +548,9 @@
         and practical work.
       </p>
 
+
       <div class="buttons">
+
         <a href="#projects" class="btn btn-primary">
           View My Work
         </a>
@@ -471,22 +558,33 @@
         <a href="#contact" class="btn btn-outline">
           Contact Me
         </a>
+
       </div>
 
+
     </div>
+
   </header>
 
 
-  <!-- ABOUT -->
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
   <section id="about">
+
     <div class="container">
+
 
       <div class="section-title">
         <small>About Me</small>
         <h2>Technical Professional</h2>
       </div>
 
+
       <div class="about-grid">
+
 
         <div class="about-text">
 
@@ -497,12 +595,14 @@
             refrigeration systems.
           </p>
 
+
           <p>
             Alongside HVAC, I have an interest in CCTV installation
             and mobile repair. I focus on developing practical
             troubleshooting skills and understanding real-world
             technical systems.
           </p>
+
 
           <p>
             My goal is to gain more professional experience,
@@ -512,6 +612,8 @@
 
         </div>
 
+
+
         <div class="info-box">
 
           <div class="info-row">
@@ -519,15 +621,18 @@
             <span>Mohd Aman Ashraf</span>
           </div>
 
+
           <div class="info-row">
             <strong>Primary Field</strong>
             <span>HVAC & AC</span>
           </div>
 
+
           <div class="info-row">
             <strong>Additional Skills</strong>
             <span>CCTV & Mobile Repair</span>
           </div>
+
 
           <div class="info-row">
             <strong>Location</strong>
@@ -536,21 +641,32 @@
 
         </div>
 
+
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- SKILLS -->
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
   <section id="skills">
+
     <div class="container">
+
 
       <div class="section-title">
         <small>What I Do</small>
         <h2>Technical Skills</h2>
       </div>
 
+
       <div class="skills-grid">
+
 
         <div class="skill">
           <div class="skill-icon">❄️</div>
@@ -561,6 +677,7 @@
           </p>
         </div>
 
+
         <div class="skill">
           <div class="skill-icon">🔧</div>
           <h3>Refrigeration</h3>
@@ -569,6 +686,7 @@
             technical components.
           </p>
         </div>
+
 
         <div class="skill">
           <div class="skill-icon">📹</div>
@@ -579,6 +697,7 @@
           </p>
         </div>
 
+
         <div class="skill">
           <div class="skill-icon">📱</div>
           <h3>Mobile Repair</h3>
@@ -586,6 +705,7 @@
             Mobile hardware and basic troubleshooting skills.
           </p>
         </div>
+
 
         <div class="skill">
           <div class="skill-icon">⚡</div>
@@ -596,6 +716,7 @@
           </p>
         </div>
 
+
         <div class="skill">
           <div class="skill-icon">🛠️</div>
           <h3>Problem Solving</h3>
@@ -605,118 +726,216 @@
           </p>
         </div>
 
+
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- PROJECTS -->
+
+  <!-- =========================
+       PROJECTS
+  ========================= -->
+
   <section id="projects">
+
     <div class="container">
+
 
       <div class="section-title">
         <small>Practical Work</small>
         <h2>Projects & Experience</h2>
       </div>
 
+
       <div class="projects">
 
-        <div class="project">
-          <div class="project-label">HVAC Project</div>
 
-          <h3>Split AC Installation</h3>
+        <div class="project">
+
+          <div class="project-label">
+            HVAC Project
+          </div>
+
+          <h3>
+            Split AC Installation
+          </h3>
 
           <p>
             Practical experience related to split AC installation
             and technical work, including installation procedures,
             basic system understanding and equipment handling.
           </p>
+
         </div>
 
-        <div class="project">
-          <div class="project-label">Technical Work</div>
 
-          <h3>AC Servicing & Troubleshooting</h3>
+
+        <div class="project">
+
+          <div class="project-label">
+            Technical Work
+          </div>
+
+          <h3>
+            AC Servicing & Troubleshooting
+          </h3>
 
           <p>
             Developing practical knowledge of AC servicing,
             maintenance and identification of common operating
             issues.
           </p>
+
         </div>
 
-        <div class="project">
-          <div class="project-label">Security Systems</div>
 
-          <h3>CCTV Installation</h3>
+
+        <div class="project">
+
+          <div class="project-label">
+            Security Systems
+          </div>
+
+          <h3>
+            CCTV Installation
+          </h3>
 
           <p>
             Practical interest and skills in CCTV camera
             installation, wiring and basic system setup.
           </p>
+
         </div>
 
-        <div class="project">
-          <div class="project-label">Electronics</div>
 
-          <h3>Mobile Repair</h3>
+
+        <div class="project">
+
+          <div class="project-label">
+            Electronics
+          </div>
+
+          <h3>
+            Mobile Repair
+          </h3>
 
           <p>
             Developing hands-on knowledge of mobile devices,
             hardware components and basic fault diagnosis.
           </p>
+
         </div>
 
+
       </div>
+
     </div>
+
   </section>
 
 
-  <!-- EDUCATION -->
+
+  <!-- =========================
+       EDUCATION
+  ========================= -->
+
   <section id="education">
+
     <div class="container">
+
 
       <div class="section-title">
         <small>Background</small>
         <h2>Education</h2>
       </div>
 
+
       <div class="timeline">
 
+
+        <!-- MOBILE REPAIRING DIPLOMA -->
+
         <div class="timeline-item">
-          <h3>Intermediate — Science Stream</h3>
+
+          <h3>
+            Diploma in Mobile Repairing
+          </h3>
+
+          <p>
+            12 Months · GLISTER EDUVERSITY | AHT Institute,
+            Moradabad · 2025 · 766/900 (85.11%)
+          </p>
+
+        </div>
+
+
+
+        <!-- INTERMEDIATE -->
+
+        <div class="timeline-item">
+
+          <h3>
+            Intermediate — Science Stream
+          </h3>
+
           <p>
             Physics, Chemistry & Mathematics · U.P. Board · 2025
           </p>
+
         </div>
 
+
+
+        <!-- HIGH SCHOOL -->
+
         <div class="timeline-item">
-          <h3>High School — Science Stream</h3>
+
+          <h3>
+            High School — Science Stream
+          </h3>
+
           <p>
             U.P. Board · 2023
           </p>
+
         </div>
+
 
       </div>
 
     </div>
+
   </section>
 
 
-  <!-- CONTACT -->
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
   <section id="contact">
+
     <div class="container">
+
 
       <div class="contact-box">
 
-        <h2>Let's Connect</h2>
+        <h2>
+          Let's Connect
+        </h2>
+
 
         <p>
           Looking for technical opportunities, internships and
           practical learning experiences.
         </p>
 
+
         <div class="contact-buttons">
+
 
           <a
             href="mailto:mohdamanashraf.cv@gmail.com"
@@ -724,39 +943,58 @@
             Email Me
           </a>
 
+
+          <!-- UPDATED LINKEDIN -->
+
           <a
-            href="https://www.linkedin.com/in/mohd-aman-ashraf-21b812363/"
+            href="https://www.linkedin.com/in/mohd-aman-ashraf"
             target="_blank"
+            rel="noopener noreferrer"
             class="btn btn-outline">
             LinkedIn
           </a>
 
+
           <a
             href="https://github.com/mohdamanashraf"
             target="_blank"
+            rel="noopener noreferrer"
             class="btn btn-outline">
             GitHub
           </a>
+
 
         </div>
 
       </div>
 
     </div>
+
   </section>
 
 
-  <!-- FOOTER -->
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
   <footer>
+
     <div class="container">
 
       © 2026 Mohd Aman Ashraf ·
-      <a href="https://github.com/mohdamanashraf" target="_blank">
+
+      <a
+        href="https://github.com/mohdamanashraf"
+        target="_blank"
+        rel="noopener noreferrer">
         GitHub
       </a>
 
     </div>
+
   </footer>
+
 
 </body>
 </html>
