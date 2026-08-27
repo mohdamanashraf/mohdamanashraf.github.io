@@ -901,14 +901,16 @@ form.addEventListener("submit", async function(event) {
        Random 6 digit number
     */
 
-    const randomNumber = Math.floor(
-        100000 + Math.random() * 900000
-    );
+  // Sequential Service Request Number
+let srnCounter = parseInt(localStorage.getItem("srnCounter") || "0", 10);
 
+srnCounter++;
+localStorage.setItem("srnCounter", srnCounter);
 
-    const serviceRequestNumber =
-        `SRN-${srnYear}${srnMonth}${srnDay}-${randomNumber}`;
+const sequentialNumber = String(srnCounter).padStart(6, "0");
 
+const serviceRequestNumber =
+    `SRN-${srnYear}${srnMonth}${srnDay}-${sequentialNumber}`;
 
     /*
        Put SRN inside hidden input.
