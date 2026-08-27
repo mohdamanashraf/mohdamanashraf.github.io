@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Request Consultation | Mohd Aman Ashraf</title>
@@ -238,6 +240,7 @@ textarea {
 }
 
 </style>
+
 </head>
 
 <body>
@@ -263,8 +266,10 @@ textarea {
         <!-- ERROR MESSAGE -->
 
         <div class="error-message" id="errorMessage">
+
             Something went wrong while submitting your request.
             Please try again.
+
         </div>
 
 
@@ -284,6 +289,7 @@ textarea {
                 id="serviceRequestNumber"
             >
 
+
             <!-- SUBJECT -->
 
             <input
@@ -291,6 +297,7 @@ textarea {
                 name="_subject"
                 value="New Consultation Request"
             >
+
 
             <!-- CUSTOMER DETAILS -->
 
@@ -307,8 +314,11 @@ textarea {
                     <div class="form-group">
 
                         <label for="name">
+
                             Customer Name
+
                             <span class="required">*</span>
+
                         </label>
 
                         <input
@@ -327,8 +337,11 @@ textarea {
                     <div class="form-group">
 
                         <label for="mobile">
+
                             Mobile Number
+
                             <span class="required">*</span>
+
                         </label>
 
                         <input
@@ -339,6 +352,7 @@ textarea {
                             pattern="[0-9]{10}"
                             maxlength="10"
                             inputmode="numeric"
+                            autocomplete="tel"
                             required
                         >
 
@@ -354,8 +368,11 @@ textarea {
                     <div class="form-group full">
 
                         <label for="email">
+
                             Customer Email
+
                             <span class="optional">(Optional)</span>
+
                         </label>
 
                         <input
@@ -363,6 +380,7 @@ textarea {
                             id="email"
                             name="customer_email"
                             placeholder="Enter your email address"
+                            autocomplete="email"
                         >
 
                     </div>
@@ -385,8 +403,11 @@ textarea {
                     <div class="form-group full">
 
                         <label for="consultation">
+
                             What type of consultation?
+
                             <span class="required">*</span>
+
                         </label>
 
                         <select
@@ -435,8 +456,11 @@ textarea {
                     <div class="form-group full">
 
                         <label for="address">
+
                             Complete Address
+
                             <span class="required">*</span>
+
                         </label>
 
                         <textarea
@@ -447,7 +471,9 @@ textarea {
                         ></textarea>
 
                         <span class="helper-text">
+
                             Please provide the complete site address where consultation is required.
+
                         </span>
 
                     </div>
@@ -458,8 +484,11 @@ textarea {
                     <div class="form-group">
 
                         <label for="city">
+
                             City
+
                             <span class="required">*</span>
+
                         </label>
 
                         <input
@@ -478,8 +507,11 @@ textarea {
                     <div class="form-group">
 
                         <label for="state">
+
                             State / Province
+
                             <span class="required">*</span>
+
                         </label>
 
                         <select
@@ -527,9 +559,11 @@ textarea {
 
                             <option>Andaman and Nicobar Islands</option>
                             <option>Chandigarh</option>
+
                             <option>
                                 Dadra and Nagar Haveli and Daman and Diu
                             </option>
+
                             <option>Delhi</option>
                             <option>Jammu and Kashmir</option>
                             <option>Ladakh</option>
@@ -546,8 +580,11 @@ textarea {
                     <div class="form-group full">
 
                         <label for="pincode">
+
                             PIN Code
+
                             <span class="required">*</span>
+
                         </label>
 
                         <input
@@ -558,6 +595,7 @@ textarea {
                             pattern="[0-9]{6}"
                             maxlength="6"
                             inputmode="numeric"
+                            autocomplete="postal-code"
                             required
                         >
 
@@ -585,6 +623,7 @@ textarea {
                     <br>
 
                     Please select your preferred consultation date and time.
+
                     Final appointment confirmation will be provided after reviewing your request.
 
                 </div>
@@ -597,8 +636,11 @@ textarea {
                     <div class="form-group">
 
                         <label for="date">
+
                             Preferred Date
+
                             <span class="required">*</span>
+
                         </label>
 
                         <input
@@ -616,8 +658,11 @@ textarea {
                     <div class="form-group">
 
                         <label for="time">
+
                             Preferred Time
+
                             <span class="required">*</span>
+
                         </label>
 
                         <select
@@ -699,6 +744,51 @@ textarea {
 
 <script>
 
+
+/* =========================================
+   NUMERIC INPUT PROTECTION
+   MOBILE + PIN CODE
+========================================= */
+
+const mobileInput = document.getElementById("mobile");
+
+const pincodeInput = document.getElementById("pincode");
+
+
+/*
+   MOBILE NUMBER
+
+   Only digits allowed.
+   Maximum 10 digits.
+   Also protects against paste.
+*/
+
+mobileInput.addEventListener("input", function () {
+
+    this.value = this.value
+        .replace(/\D/g, "")
+        .slice(0, 10);
+
+});
+
+
+/*
+   PIN CODE
+
+   Only digits allowed.
+   Maximum 6 digits.
+   Also protects against paste.
+*/
+
+pincodeInput.addEventListener("input", function () {
+
+    this.value = this.value
+        .replace(/\D/g, "")
+        .slice(0, 6);
+
+});
+
+
 /* =========================================
    SET MINIMUM DATE TO TODAY
 ========================================= */
@@ -753,6 +843,41 @@ form.addEventListener("submit", async function(event) {
     /* Hide previous error */
 
     errorMessage.style.display = "none";
+
+
+    /* =========================================
+       FINAL VALIDATION
+    ========================================= */
+
+    const mobileValue = mobileInput.value;
+
+    const pinValue = pincodeInput.value;
+
+
+    if (!/^[0-9]{10}$/.test(mobileValue)) {
+
+        errorMessage.textContent =
+            "Please enter a valid 10-digit mobile number.";
+
+        errorMessage.style.display = "block";
+
+        mobileInput.focus();
+
+        return;
+    }
+
+
+    if (!/^[0-9]{6}$/.test(pinValue)) {
+
+        errorMessage.textContent =
+            "Please enter a valid 6-digit PIN code.";
+
+        errorMessage.style.display = "block";
+
+        pincodeInput.focus();
+
+        return;
+    }
 
 
     /* =========================================
@@ -885,6 +1010,9 @@ form.addEventListener("submit", async function(event) {
 
 
         /* Show error */
+
+        errorMessage.textContent =
+            "Something went wrong while submitting your request. Please try again.";
 
         errorMessage.style.display = "block";
 
