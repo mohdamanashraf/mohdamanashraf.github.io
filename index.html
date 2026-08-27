@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mohd Aman Ashraf | HVAC & Technical Professional</title>
+
+  <meta name="description"
+        content="Mohd Aman Ashraf - HVAC & AC Technician, CCTV Installation and Mobile Repair professional portfolio.">
+
+  <meta name="author" content="Mohd Aman Ashraf">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1120;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 17, 32, 0.94);
+      border-bottom: 1px solid #1f2937;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.16), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.10), transparent 35%);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 80px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid #334155;
+      border-radius: 50px;
+      color: #7dd3fc;
+      font-size: 13px;
+      margin-bottom: 20px;
+      background: #111827;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      color: white;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      max-width: 680px;
+      font-size: 18px;
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 21px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #06111d;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #7dd3fc;
+    }
+
+    .btn-outline {
+      border: 1px solid #475569;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 90px 0;
+      border-top: 1px solid #172033;
+    }
+
+    .section-title {
+      margin-bottom: 45px;
+    }
+
+    .section-title small {
+      color: #38bdf8;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      color: white;
+      margin-top: 8px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+    }
+
+    .about-text p {
+      color: #94a3b8;
+      margin-bottom: 18px;
+    }
+
+    .info-box {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 25px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-row strong {
+      color: white;
+    }
+
+    .info-row span {
+      color: #94a3b8;
+      text-align: right;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill {
+      background: #111827;
+      border: 1px solid #1f2937;
+      padding: 25px;
+      border-radius: 14px;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+    }
+
+    .skill-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .skill h3 {
+      color: white;
+      margin-bottom: 7px;
+    }
+
+    .skill p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .project h3 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .project p {
+      color: #94a3b8;
+    }
+
+    .project-label {
+      display: inline-block;
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    /* EDUCATION */
+    .timeline {
+      border-left: 2px solid #334155;
+      padding-left: 25px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #38bdf8;
+      left: -32px;
+      top: 8px;
+    }
+
+    .timeline-item h3 {
+      color: white;
+    }
+
+    .timeline-item p {
+      color: #94a3b8;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      text-align: center;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 18px;
+      padding: 55px 25px;
+    }
+
+    .contact-box h2 {
+      color: white;
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: #94a3b8;
+      margin-bottom: 25px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #1f2937;
+      padding: 30px 0;
+      text-align: center;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #38bdf8;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        Mohd Aman<span>.</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-content">
+
+      <div class="tag">
+        Available for Technical Opportunities
+      </div>
+
+      <h1>
+        Mohd Aman<br>
+        <span>Ashraf</span>
+      </h1>
+
+      <p>
+        HVAC & AC Technician with practical technical interests in
+        air-conditioning, refrigeration, CCTV installation and mobile
+        repair. Building hands-on skills through continuous learning
+        and practical work.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="btn btn-primary">
+          View My Work
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          Contact Me
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+
+      <div class="section-title">
+        <small>About Me</small>
+        <h2>Technical Professional</h2>
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-text">
+
+          <p>
+            I am Mohd Aman Ashraf, developing my career in the
+            technical and HVAC field. My interests include AC
+            installation, servicing, troubleshooting and
+            refrigeration systems.
+          </p>
+
+          <p>
+            Alongside HVAC, I have an interest in CCTV installation
+            and mobile repair. I focus on developing practical
+            troubleshooting skills and understanding real-world
+            technical systems.
+          </p>
+
+          <p>
+            My goal is to gain more professional experience,
+            strengthen my technical knowledge and grow within the
+            HVAC and technical services industry.
+          </p>
+
+        </div>
+
+        <div class="info-box">
+
+          <div class="info-row">
+            <strong>Name</strong>
+            <span>Mohd Aman Ashraf</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Primary Field</strong>
+            <span>HVAC & AC</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Additional Skills</strong>
+            <span>CCTV & Mobile Repair</span>
+          </div>
+
+          <div class="info-row">
+            <strong>Location</strong>
+            <span>India</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+
+      <div class="section-title">
+        <small>What I Do</small>
+        <h2>Technical Skills</h2>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill">
+          <div class="skill-icon">❄️</div>
+          <h3>AC & HVAC</h3>
+          <p>
+            Split AC installation, servicing, maintenance and
+            basic troubleshooting.
+          </p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">🔧</div>
+          <h3>Refrigeration</h3>
+          <p>
+            Understanding of basic refrigeration systems and
+            technical components.
+          </p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">📹</div>
+          <h3>CCTV Installation</h3>
+          <p>
+            CCTV installation, basic configuration and
+            troubleshooting.
+          </p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">📱</div>
+          <h3>Mobile Repair</h3>
+          <p>
+            Mobile hardware and basic troubleshooting skills.
+          </p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">⚡</div>
+          <h3>Electrical Basics</h3>
+          <p>
+            Basic electrical concepts relevant to technical
+            equipment and AC systems.
+          </p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">🛠️</div>
+          <h3>Problem Solving</h3>
+          <p>
+            Practical approach to identifying faults and finding
+            technical solutions.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+
+      <div class="section-title">
+        <small>Practical Work</small>
+        <h2>Projects & Experience</h2>
+      </div>
+
+      <div class="projects">
+
+        <div class="project">
+          <div class="project-label">HVAC Project</div>
+
+          <h3>Split AC Installation</h3>
+
+          <p>
+            Practical experience related to split AC installation
+            and technical work, including installation procedures,
+            basic system understanding and equipment handling.
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-label">Technical Work</div>
+
+          <h3>AC Servicing & Troubleshooting</h3>
+
+          <p>
+            Developing practical knowledge of AC servicing,
+            maintenance and identification of common operating
+            issues.
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-label">Security Systems</div>
+
+          <h3>CCTV Installation</h3>
+
+          <p>
+            Practical interest and skills in CCTV camera
+            installation, wiring and basic system setup.
+          </p>
+        </div>
+
+        <div class="project">
+          <div class="project-label">Electronics</div>
+
+          <h3>Mobile Repair</h3>
+
+          <p>
+            Developing hands-on knowledge of mobile devices,
+            hardware components and basic fault diagnosis.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+
+      <div class="section-title">
+        <small>Background</small>
+        <h2>Education</h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h3>Intermediate — Science Stream</h3>
+          <p>
+            Physics, Chemistry & Mathematics · U.P. Board · 2025
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>High School — Science Stream</h3>
+          <p>
+            U.P. Board · 2023
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h2>Let's Connect</h2>
+
+        <p>
+          Looking for technical opportunities, internships and
+          practical learning experiences.
+        </p>
+
+        <div class="contact-buttons">
+
+          <a
+            href="mailto:mohdamanashraf.cv@gmail.com"
+            class="btn btn-primary">
+            Email Me
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/mohd-aman-ashraf-21b812363/"
+            target="_blank"
+            class="btn btn-outline">
+            LinkedIn
+          </a>
+
+          <a
+            href="https://github.com/mohdamanashraf"
+            target="_blank"
+            class="btn btn-outline">
+            GitHub
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+
+      © 2026 Mohd Aman Ashraf ·
+      <a href="https://github.com/mohdamanashraf" target="_blank">
+        GitHub
+      </a>
+
+    </div>
+  </footer>
+
+</body>
+</html>
