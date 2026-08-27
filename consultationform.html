@@ -7,6 +7,7 @@
 <title>Request Consultation | Mohd Aman Ashraf</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -180,6 +181,12 @@ textarea {
     transform: translateY(0);
 }
 
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
 .bottom-note {
     text-align: center;
     color: #78849b;
@@ -188,7 +195,18 @@ textarea {
     margin-top: 18px;
 }
 
-/* Mobile */
+.error-message {
+    display: none;
+    background: rgba(255, 91, 91, 0.10);
+    border: 1px solid rgba(255, 91, 91, 0.30);
+    color: #ff9b9b;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 13px;
+}
+
 @media (max-width: 650px) {
 
     body {
@@ -218,6 +236,7 @@ textarea {
         font-size: 18px;
     }
 }
+
 </style>
 </head>
 
@@ -228,6 +247,7 @@ textarea {
     <div class="form-card">
 
         <!-- HEADER -->
+
         <div class="header">
 
             <h1>Request Consultation</h1>
@@ -240,33 +260,40 @@ textarea {
         </div>
 
 
+        <!-- ERROR MESSAGE -->
+
+        <div class="error-message" id="errorMessage">
+            Something went wrong while submitting your request.
+            Please try again.
+        </div>
+
+
         <!-- FORM -->
+
         <form
             id="consultationForm"
             action="https://formspree.io/f/xppzaynb"
             method="POST"
         >
 
-            <!--
-                Formspree will redirect to this URL after successful submission.
-                JavaScript will automatically add the generated SRN.
-            -->
+            <!-- SRN -->
+
             <input
                 type="hidden"
-                name="_next"
-                id="nextPage"
+                name="service_request_number"
+                id="serviceRequestNumber"
             >
 
-
             <!-- SUBJECT -->
+
             <input
                 type="hidden"
                 name="_subject"
                 value="New Consultation Request"
             >
 
-
             <!-- CUSTOMER DETAILS -->
+
             <div class="form-section">
 
                 <h2 class="section-title">
@@ -276,6 +303,7 @@ textarea {
                 <div class="form-row">
 
                     <!-- NAME -->
+
                     <div class="form-group">
 
                         <label for="name">
@@ -295,6 +323,7 @@ textarea {
 
 
                     <!-- MOBILE -->
+
                     <div class="form-group">
 
                         <label for="mobile">
@@ -321,6 +350,7 @@ textarea {
 
 
                     <!-- EMAIL -->
+
                     <div class="form-group full">
 
                         <label for="email">
@@ -343,6 +373,7 @@ textarea {
 
 
             <!-- CONSULTATION -->
+
             <div class="form-section">
 
                 <h2 class="section-title">
@@ -364,7 +395,11 @@ textarea {
                             required
                         >
 
-                            <option value="" selected disabled>
+                            <option
+                                value=""
+                                selected
+                                disabled
+                            >
                                 Select consultation type
                             </option>
 
@@ -386,6 +421,7 @@ textarea {
 
 
             <!-- SITE ADDRESS -->
+
             <div class="form-section">
 
                 <h2 class="section-title">
@@ -394,7 +430,8 @@ textarea {
 
                 <div class="form-row">
 
-                    <!-- STREET ADDRESS -->
+                    <!-- COMPLETE ADDRESS -->
+
                     <div class="form-group full">
 
                         <label for="address">
@@ -417,6 +454,7 @@ textarea {
 
 
                     <!-- CITY -->
+
                     <div class="form-group">
 
                         <label for="city">
@@ -436,6 +474,7 @@ textarea {
 
 
                     <!-- STATE -->
+
                     <div class="form-group">
 
                         <label for="state">
@@ -449,7 +488,11 @@ textarea {
                             required
                         >
 
-                            <option value="" selected disabled>
+                            <option
+                                value=""
+                                selected
+                                disabled
+                            >
                                 Select State / UT
                             </option>
 
@@ -484,7 +527,9 @@ textarea {
 
                             <option>Andaman and Nicobar Islands</option>
                             <option>Chandigarh</option>
-                            <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                            <option>
+                                Dadra and Nagar Haveli and Daman and Diu
+                            </option>
                             <option>Delhi</option>
                             <option>Jammu and Kashmir</option>
                             <option>Ladakh</option>
@@ -497,6 +542,7 @@ textarea {
 
 
                     <!-- PIN -->
+
                     <div class="form-group full">
 
                         <label for="pincode">
@@ -523,11 +569,13 @@ textarea {
 
 
             <!-- APPOINTMENT -->
+
             <div class="form-section">
 
                 <h2 class="section-title">
                     Preferred Appointment
                 </h2>
+
 
                 <div class="appointment-note">
 
@@ -545,6 +593,7 @@ textarea {
                 <div class="form-row">
 
                     <!-- DATE -->
+
                     <div class="form-group">
 
                         <label for="date">
@@ -563,6 +612,7 @@ textarea {
 
 
                     <!-- TIME -->
+
                     <div class="form-group">
 
                         <label for="time">
@@ -576,7 +626,11 @@ textarea {
                             required
                         >
 
-                            <option value="" selected disabled>
+                            <option
+                                value=""
+                                selected
+                                disabled
+                            >
                                 Select preferred time
                             </option>
 
@@ -616,6 +670,7 @@ textarea {
 
 
             <!-- SUBMIT -->
+
             <div class="submit-area">
 
                 <button
@@ -627,8 +682,10 @@ textarea {
                 </button>
 
                 <p class="bottom-note">
+
                     By submitting this form, you are requesting a consultation.
                     Our team will contact you regarding your appointment.
+
                 </p>
 
             </div>
@@ -640,136 +697,210 @@ textarea {
 </div>
 
 
-<!-- ========================================================= -->
-<!-- JAVASCRIPT -->
-<!-- ========================================================= -->
-
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================
+   SET MINIMUM DATE TO TODAY
+========================================= */
 
-    const form = document.getElementById("consultationForm");
-    const dateInput = document.getElementById("date");
-    const nextPage = document.getElementById("nextPage");
-    const submitButton = document.getElementById("submitButton");
+const dateInput = document.getElementById("date");
+
+const today = new Date();
+
+const year = today.getFullYear();
+
+const month = String(
+    today.getMonth() + 1
+).padStart(2, "0");
+
+const day = String(
+    today.getDate()
+).padStart(2, "0");
+
+dateInput.min = `${year}-${month}-${day}`;
 
 
-    /* =======================================================
-       SET MINIMUM DATE TO TODAY
-       ======================================================= */
+/* =========================================
+   FORM SUBMISSION
+   SRN + FORMSPREE + CUSTOM THANK YOU PAGE
+========================================= */
 
-    const today = new Date();
+const form = document.getElementById("consultationForm");
 
-    const year = today.getFullYear();
+const submitButton = document.getElementById("submitButton");
 
-    const month = String(
-        today.getMonth() + 1
+const srnInput = document.getElementById(
+    "serviceRequestNumber"
+);
+
+const errorMessage = document.getElementById(
+    "errorMessage"
+);
+
+
+form.addEventListener("submit", async function(event) {
+
+    /*
+       STOP NORMAL FORM SUBMISSION
+
+       This is important because normal Formspree
+       submission opens Formspree's own Thanks page.
+    */
+
+    event.preventDefault();
+
+
+    /* Hide previous error */
+
+    errorMessage.style.display = "none";
+
+
+    /* =========================================
+       GENERATE UNIQUE SRN
+    ========================================= */
+
+    const now = new Date();
+
+    const srnYear = now.getFullYear();
+
+    const srnMonth = String(
+        now.getMonth() + 1
     ).padStart(2, "0");
 
-    const day = String(
-        today.getDate()
+    const srnDay = String(
+        now.getDate()
     ).padStart(2, "0");
 
-    dateInput.min = `${year}-${month}-${day}`;
+
+    /*
+       Random 6 digit number
+    */
+
+    const randomNumber = Math.floor(
+        100000 + Math.random() * 900000
+    );
 
 
-    /* =======================================================
-       FORM SUBMIT
-       ======================================================= */
-
-    form.addEventListener("submit", function (event) {
-
-        /*
-         * Generate SRN only once.
-         */
-
-        let srnInput = document.getElementById("serviceRequestNumber");
+    const serviceRequestNumber =
+        `SRN-${srnYear}${srnMonth}${srnDay}-${randomNumber}`;
 
 
-        if (!srnInput) {
+    /*
+       Put SRN inside hidden input.
 
-            srnInput = document.createElement("input");
+       This means Formspree email will also
+       receive the SRN.
+    */
 
-            srnInput.type = "hidden";
+    srnInput.value = serviceRequestNumber;
 
-            srnInput.id = "serviceRequestNumber";
 
-            srnInput.name = "service_request_number";
+    /* =========================================
+       CHANGE BUTTON
+    ========================================= */
 
-            form.appendChild(srnInput);
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+        "Submitting Request...";
+
+
+    /* =========================================
+       PREPARE FORM DATA
+    ========================================= */
+
+    const formData = new FormData(form);
+
+
+    /* =========================================
+       SEND TO FORMSPREE
+    ========================================= */
+
+    try {
+
+        const response = await fetch(
+            form.action,
+            {
+                method: "POST",
+
+                body: formData,
+
+                headers: {
+                    "Accept": "application/json"
+                }
+            }
+        );
+
+
+        /* =========================================
+           CHECK FORMSPREE RESPONSE
+        ========================================= */
+
+        if (response.ok) {
+
+
+            /*
+               Save SRN locally as an extra backup.
+            */
+
+            localStorage.setItem(
+                "service_request_number",
+                serviceRequestNumber
+            );
+
+
+            /*
+               Redirect to YOUR custom thankyou.html
+
+               SRN is passed in URL.
+            */
+
+            window.location.href =
+                "https://mohdamanashraf.github.io/thankyou.html?srn="
+                + encodeURIComponent(
+                    serviceRequestNumber
+                );
+
+
+        } else {
+
+            /*
+               Formspree rejected the request.
+            */
+
+            throw new Error(
+                "Form submission failed"
+            );
 
         }
 
 
-        /* ===================================================
-           GENERATE SRN
-           Format:
-           SRN-YYYYMMDD-XXXXXX
-           =================================================== */
+    } catch (error) {
 
-        const now = new Date();
 
-        const srnYear = now.getFullYear();
-
-        const srnMonth = String(
-            now.getMonth() + 1
-        ).padStart(2, "0");
-
-        const srnDay = String(
-            now.getDate()
-        ).padStart(2, "0");
-
-        const randomNumber = Math.floor(
-            100000 + Math.random() * 900000
+        console.error(
+            "Submission Error:",
+            error
         );
 
 
-        const srn =
-            `SRN-${srnYear}${srnMonth}${srnDay}-${randomNumber}`;
+        /* Show error */
+
+        errorMessage.style.display = "block";
 
 
-        /* ===================================================
-           PUT SRN INTO FORM
-           =================================================== */
+        /* Restore button */
 
-        srnInput.value = srn;
+        submitButton.disabled = false;
 
+        submitButton.textContent =
+            "Request Consultation";
 
-        /* ===================================================
-           REDIRECT TO OUR OWN THANK YOU PAGE
-           WITH SRN
-           =================================================== */
-
-        const thankYouURL =
-            `${window.location.origin}/thankyou.html?srn=${encodeURIComponent(srn)}`;
-
-
-        nextPage.value = thankYouURL;
-
-
-        /* ===================================================
-           CHANGE BUTTON WHILE SUBMITTING
-           =================================================== */
-
-        submitButton.disabled = true;
-
-        submitButton.textContent = "Submitting Request...";
-
-
-        /*
-         * IMPORTANT:
-         * Do NOT use event.preventDefault().
-         *
-         * The normal browser submission must continue
-         * so Formspree receives the form and sends the email.
-         */
-
-    });
+    }
 
 });
 
 </script>
-
 
 </body>
 </html>
