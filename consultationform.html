@@ -615,6 +615,38 @@ const day = String(today.getDate()).padStart(2, "0");
 dateInput.min = `${year}-${month}-${day}`;
 
 </script>
+    
+
+<!-- SRN GENERATOR -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.querySelector("form");
+
+    if (!form) return;
+
+    form.addEventListener("submit", function () {
+
+        const srnInput = document.createElement("input");
+
+        srnInput.type = "hidden";
+        srnInput.name = "service_request_number";
+
+        const now = new Date();
+
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        const random = Math.floor(100000 + Math.random() * 900000);
+
+        srnInput.value = `SRN-${year}${month}${day}-${random}`;
+
+        form.appendChild(srnInput);
+
+    });
+
+});
+</script>
 
 </body>
 </html>
